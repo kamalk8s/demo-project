@@ -1,0 +1,74 @@
+version: "3.7"
+
+services:
+  flask: ## Flask Application (It's a Backend for out Nginx server). Works on http://localhost:8080
+    build: ./demo-backend/
+    environment:
+      DEBUG_MODE: "True"
+      DATABASE_URL: "postgresql://kamal:simplepass@psql:5432/db_main"
+      SECRET_KEY: "c498c3fc762cf7b4313b0c43463f9f58a8cc9c5341596cc4a24c9d266cee56c3"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - psql
+    links:
+      - psql
+    restart: always
+    volumes:
+      - type: bind
+        source: ./demo-backend
+        target: /App
+        read_only: false
+  psql: ## Database for Flask Application. It works on internal Port 5432, not accessible from Host machine.
+    build: ./demo-db/ 
+    environment:
+      POSTGRES_PASSWORD: "simplepass"
+      POSTGRES_USER: "kamal"
+      POSTGRES_DB: "db_main"
+    expose:
+      - "5432"
+    volumes:
+      - type: bind
+        source: ./demo-db/data
+        target: /var/lib/postgresql/data
+        read_only: false
+  nginx: ## Main Frontend which user is going to see. Works on http://localhost:81
+    build: ./demo-front/
+    ports:
+      - "81:80"
+    volumes:
+      - type: bind
+        source: ./demo-front
+        target: /usr/share/nginx/html
+        read_only: false
+  data_generator_api: ## API server Built on Flask. Provides the random data on Nginx home page.
+    build: ./demo-api/
+    environment:
+      DEBUG_MODE: "True"
+      DATABASE_URL: "postgresql://kamal:simplepass@data_generator_db:5432/db_main"
+      SECRET_KEY: "c498c3fc762cf7b4313dfg64354g8a8cc9c5341596cc4a24c9d266cee56c3"
+    ports:
+      - "8081:8080"
+    depends_on:
+      - data_generator_db
+    links:
+      - data_generator_db
+    restart: always
+    volumes:
+      - type: bind
+        source: ./demo-api/
+        target: /App
+        read_only: false
+  data_generator_db: ## Database for random data for API server.
+    image: postgres:13.4-alpine
+    environment:
+      POSTGRES_PASSWORD: "simplepass"
+      POSTGRES_USER: "kamal"
+      POSTGRES_DB: "db_main"
+    expose:
+      - "5432"
+    volumes:
+      - type: bind
+        source: ./demo-api-db/data
+        target: /var/lib/postgresql/data
+        read_only: false

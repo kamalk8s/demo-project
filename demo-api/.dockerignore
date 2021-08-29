@@ -1,0 +1,6 @@
+.gitignore
+dev2.db
+Dockerfile
+Pipfile
+Pipfile.lock
+__pycache__

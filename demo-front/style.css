@@ -1,0 +1,27 @@
+body {
+	/* background: #225048; */
+	background-image: url('./bg.jpg');
+}
+.overflowy-scroll {
+	overflow-y: scroll;
+	max-height: 500px;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+#output {
+	background-color: rgba(255, 255, 255, 0.637);
+	border: 1px solid rgba(255, 255, 255, 0.7);
+}
+input {
+	background-color: rgba(255, 255, 255, 0.637) !important;
+	color: rgb(9, 65, 87) !important;
+}
+button {
+	background-color: rgba(11, 66, 9, 0.637) !important;
+	border: none !important;
+}

@@ -1,0 +1,16 @@
+.git
+.vscode
+.temp
+__pycache__
+__init__.pyc
+env
+venv
+sample
+example
+.ipynb.checkpoints
+.ipynb_checkpoints/*
+.github
+*.pyc
+Pipfile.lock
+pgd
+Pipfile.lock
