@@ -5,7 +5,8 @@ import os, subprocess
 if not path.exists('src/db/data'):
     os.mkdir('src/db/data')
 
-update = input("Do you want to run apt update & upgrade? [y/n]: ")
+# update = input("Do you want to run apt update & upgrade? [y/n]: ")
+update = 'y'
 
 if update.lower() == 'y':
     # Updating the System
@@ -33,7 +34,7 @@ else:
 # Installing Docker
 if (subprocess.run(['docker', '--version']).returncode != 0):
     print('Docker not found.')
-    installPython = subprocess.run(['sudo', 'apt', 'docker.io', 'python3-pip', '-y'])
+    installPython = subprocess.run(['sudo', 'apt', 'install', 'docker.io', '-y'])
     subprocess.run(['sudo', 'systemctl', 'enable', 'docker'])
     subprocess.run(['sudo', 'systemctl', 'start', 'docker'])
     subprocess.run(['sudo', 'groupadd', 'docker'])

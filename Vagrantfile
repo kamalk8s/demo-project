@@ -15,6 +15,13 @@ Vagrant.configure("2") do |config|
     apt update && apt -y upgrade
     apt install -y git
     apt install -y python3.9
+    apt install -y python3-pip
+    apt install -y docker.io
+    systemctl enable docker
+    systemctl start docker
+    groupmod -aG docker $USER
+    newgrp docker
+    sudo apt -y install docker-compose
     cd /
     git clone https://github.com/kamalk8s/demo-project.git
     cd demo-project
