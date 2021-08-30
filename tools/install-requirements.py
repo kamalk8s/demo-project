@@ -2,8 +2,8 @@ from os import path
 import os, subprocess
 
 
-if not path.exists('../src/db/data'):
-    os.mkdir('../src/db/data')
+if not path.exists('src/db/data'):
+    os.mkdir('src/db/data')
 
 update = input("Do you want to run apt update & upgrade? [y/n]: ")
 

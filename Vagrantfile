@@ -14,10 +14,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt update && apt -y upgrade
     apt install -y git
-    apt install python3.9
+    apt install -y python3.9
     cd /
     git clone https://github.com/kamalk8s/demo-project.git
     cd demo-project
-    python3 /app/tools/install-requirements.py
+    python3 ./tools/install-requirements.py
   SHELL
 end
