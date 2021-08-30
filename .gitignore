@@ -20,3 +20,4 @@ demo-api-db/data
 test*
 null
 data
+.vagrant

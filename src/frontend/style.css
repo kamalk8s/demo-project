@@ -7,12 +7,6 @@ body {
 	max-height: 500px;
 }
 
-.overflow-hidden {
-	overflow: hidden;
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-
 #output {
 	background-color: rgba(255, 255, 255, 0.637);
 	border: 1px solid rgba(255, 255, 255, 0.7);
