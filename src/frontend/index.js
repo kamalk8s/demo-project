@@ -3,7 +3,7 @@ let getEntries = () => {
   $.ajax({
     headers: { Accept: "application/json" },
     type: "GET",
-    url: "http://localhost:8080/api/entry",
+    url: "http://192.168.10.10:8080/api/entry",
     crossDomain: true,
     success: function (data, textStatus, request) {
       let tableBody = document.getElementById("tbody");
@@ -31,7 +31,7 @@ let randomEntry = () => {
   $.ajax({
     headers: { Accept: "application/json" },
     type: "GET",
-    url: "http://localhost:8081/random-entry",
+    url: "http://192.168.10.10:8081/random-entry",
     crossDomain: true,
     success: function (data, textStatus, request) {
       let username = document.getElementById("username");
@@ -58,7 +58,7 @@ function send(btn) {
   btn.className = "btn btn-success disabled";
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("POST", "http://localhost:8080/api/entry");
+  xmlhttp.open("POST", "http://192.168.10.10:8080/api/entry");
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.send(JSON.stringify(person));
   location.reload();
