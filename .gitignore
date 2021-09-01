@@ -17,7 +17,7 @@ Pipfile
 Pipfile.lock
 demo-db/data
 demo-api-db/data
-test*
 null
 data
 .vagrant
+temp*

@@ -1,6 +1,7 @@
 ## HOW TO CONFIGURE
 
 - Clone this repository `git clone https://github.com/kamalk8s/demo-project.git`
+- Download and install VirtaulBox from [Virtualbox official website](https://virtualbox.org)
 
 ### For Windows
 
